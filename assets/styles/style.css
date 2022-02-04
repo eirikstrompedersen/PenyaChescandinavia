@@ -43,6 +43,16 @@ h4 {
 
 /*  Layout*/
 
+#social-links {
+    color: #ffffff;
+    font-size: 1.7rem;
+    letter-spacing: 0.5rem;
+}
+
+#social-links :hover {
+    color: rgb(68, 68, 68);
+}
+
 .site-content {
     background-color: #ffffff;
     height: fit-content;
