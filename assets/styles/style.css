@@ -6,6 +6,19 @@
     border: 0;
 }
 
+/* Warning */ 
+.under-construction {
+    background-color: rgb(252, 210, 42);
+    color: #000000;
+    font-family: 'PT Serif',Georgia, serif;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    margin-top: 5%;
+}
+
 /* Headings */
 
 h1 {
@@ -38,8 +51,24 @@ h4 {
     line-height: 1.1;
     letter-spacing: -3px;
     font-size: 56px;
-
 }
+
+.register-heading {
+    color: #292929;
+    font-family: 'PT Serif',Georgia, serif;
+    font-weight: bold;
+    line-height: 1.1;
+    letter-spacing: -3px;
+    font-size: 56px;
+    text-align: center;
+}
+
+
+/* image styles */
+.center-img {
+    align-content: center;
+}
+
 
 /*  Layout*/
 
@@ -73,6 +102,15 @@ section {
     margin-bottom: 5%;
 }
 
+.become-member {
+    background-color: #ffffff;
+    height: fit-content;
+    width: 1000px;
+    margin-left: 25%;
+    margin-top: 30px;
+    margin-bottom: 5%;
+    text-align: center;
+}
 
 .ingress {
     margin-top: 5%;
@@ -109,6 +147,15 @@ section {
     display: block;
 }
 
+.register-section {
+    font-family: "PT Serif",Georgia,serif;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    color: #353535;
+    font-size: 18px;
+    line-height: 1.6;
+    display: block;
+}
 
 .header-section {
     padding: 30px 0 40px 0px;
