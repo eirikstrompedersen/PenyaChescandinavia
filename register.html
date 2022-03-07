@@ -40,6 +40,7 @@
     -->
 
     <!-- Bootstrap navbar setup tutorial https://www.youtube.com/watch?v=qNifU_aQRio&t=11s-->
+
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg" style="background-color:black">
         <div class="container-lg">
             <!--conatainer classen kan bruks for smalere navbar-->
@@ -80,7 +81,7 @@
                         <a href="index.html" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="register.html" class="nav-link active">Become member</a>
+                        <a href="register.html" class="nav-link active">Register</a>
                     </li>
                     <li class="nav-item active">
                         <a href="legacy.html" class="nav-link disabled">About</a>
@@ -99,11 +100,10 @@
                 </form>
                 -->
         </div>
-
-
     </nav>
 
-    <div class="under-construction">This site is under construction</div>
+    <span class="under-construction-left">This site is under construction</span>
+    <span class="under-construction-right">This site is under construction</span>
 
     <div class="static-layout">
         <div id="social-link">
@@ -125,45 +125,100 @@
         </div>
     </div>
 
-    <div>
-        <section class="become-member">
-            <h2 class="register-heading">Become member</h2>
+    <section class="become-member">
+        <h2 class="register-heading">Become member</h2>
 
-            <img class="center-img" src="/assets/images/logo.png" alt="Logo, Penya Chescandinavia">
+        <img class="center-img" src="/assets/images/logo.png" alt="Logo, Penya Chescandinavia">
 
-            <span class="register-section">
-                Penya Chescandinavia is an official Valencia CF penya. We are very happy that you have chosen to support
-                the club and us! With your membership fee you contribute to strengthen the club and Chescandinavia in
-                the effort to spread the interest for the club. You also help make sure that the voice of the supporters
-                abroad is being heard at the club.
-                <br>
-                <br>
-                All nationalities are welcome to join of course!
-                Your membership will support the Penya work to spread Valencianism across the Nordic countries and
-                online. We aim to keep you informed about what is happening at the club and we are of course happy to
-                help with any queries you might have about travelling to Valencia. We arrange meet ups both in Valencia
-                and in the Nordic countries. Your membership also gives you voting rights at our general assembly
-                You contribute to maintaining our web site and making possible the sharing of articles and knowledge
-                about Valencia CF
-                There are some additional rights here.
-                <br>
-                <br>
-                Choose an adult membership (Vuxen) if you are 18 or over or a Youth membership (Ungdom) if the member is
-                younger. You will be redirected to paypal to complete the membership fee payment. Do not forget to
-                mention your birth date in the commentary section to enable us to get your membership card from Valencia
-                CF.(ex. 1995-12-24).
-                <br>
-                <br>
-                After paying you will see a confirmation page from paypal. If you have any questions, do not hesitate to
-                ask on penya@chescandinavia.com
-                <br>
-                <br>
-                Thank you for supporting us!
-            </span>
-        </section>
+        <span class="register-section">
+            Penya Chescandinavia is an official Valencia CF penya. We are very happy that you have chosen to support
+            the club and us! With your membership fee you contribute to strengthen the club and Chescandinavia in
+            the effort to spread the interest for the club. You also help make sure that the voice of the supporters
+            abroad is being heard at the club.
+            <br>
+            <br>
+            All nationalities are welcome to join of course!
+            Your membership will support the Penya work to spread Valencianism across the Nordic countries and
+            online. We aim to keep you informed about what is happening at the club and we are of course happy to
+            help with any queries you might have about travelling to Valencia. We arrange meet ups both in Valencia
+            and in the Nordic countries. Your membership also gives you voting rights at our general assembly
+            You contribute to maintaining our web site and making possible the sharing of articles and knowledge
+            about Valencia CF
+            There are some additional rights here.
+            <br>
+            <br>
+            Choose an adult membership (Vuxen) if you are 18 or over or a Youth membership (Ungdom) if the member is
+            younger. You will be redirected to paypal to complete the membership fee payment. Do not forget to
+            mention your birth date in the commentary section to enable us to get your membership card from Valencia
+            CF.(ex. 1995-12-24).
+            <br>
+            <br>
+            After paying you will see a confirmation page from paypal. If you have any questions, do not hesitate to
+            ask on penya@chescandinavia.com
+            <br>
+            <br>
+            Thank you for supporting us!
+        </span>
+
+        <div id="smart-button-container">
+            <div style="text-align: center;">
+                <div id="paypal-button-container"></div>
+            </div>
+        </div>
+
+        <div>
+        <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=EUR"
+            data-sdk-integration-source="button-factory"></script>
+
+        <script>
+            function initPayPalButton() {
+                paypal.Buttons({
+                    style: {
+                        shape: 'rect',
+                        color: 'black',
+                        layout: 'vertical',
+                        label: 'pay',
+
+                    },
+
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                "description": "Membership",
+                                "amount": {
+                                    "currency_code": "EUR",
+                                    "value": 10
+                                }
+                            }]
+                        });
+                    },
+
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (orderData) {
+
+                            // Full available details
+                            console.log('Capture result', orderData, JSON.stringify(orderData, null,
+                                2));
+
+                            // Show a success message within this page, e.g.
+                            const element = document.getElementById('paypal-button-container');
+                            element.innerHTML = '';
+                            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                            // Or go to another URL:  actions.redirect('thank_you.html');
+
+                        });
+                    },
+
+                    onError: function (err) {
+                        console.log(err);
+                    }
+                }).render('#paypal-button-container');
+            }
+            initPayPalButton();
+        </script>
     </div>
-
-
+    </section>
 
     <footer>
         <a href="https://www.afgruppen.no">© Penya Chescandinavia <script type="text/javascript">
